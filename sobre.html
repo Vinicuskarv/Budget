@@ -69,7 +69,7 @@
 
     h1 {
       text-align: center;
-      color: #333;
+      color: #ffffff;
       margin-bottom: 30px;
     }
 
@@ -79,7 +79,7 @@
 
     p {
       font-size: 18px;
-      color: #555;
+      color: #ffffff;
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -184,7 +184,7 @@
       <a href="niveis.html">Níveis</a>
       <a href="sobre.html">Sobre</a>
       <label class="switch">
-        <input type="checkbox" onclick="toggleDarkMode()">
+        <input type="checkbox" onclick="toggleDarkMode()" id="modeSwitch">
         <span class="slider"></span>
       </label>
     </div>
@@ -208,8 +208,29 @@
   <script>
     // Função para alternar o modo escuro
     function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
+      const body = document.body;
+      const modeSwitch = document.getElementById('modeSwitch');
+      body.classList.toggle('dark-mode');
+      // Salvar o estado do tema na sessionStorage
+      sessionStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+      // Atualizar a posição do switch
+      modeSwitch.checked = body.classList.contains('dark-mode');
     }
+
+    // Verificar o estado do tema na sessionStorage ao carregar a página
+    window.onload = function() {
+      const darkMode = sessionStorage.getItem('darkMode') === 'true';
+      const body = document.body;
+      const modeSwitch = document.getElementById('modeSwitch');
+      
+      if (darkMode) {
+        body.classList.add('dark-mode');
+        modeSwitch.checked = true;
+      } else {
+        body.classList.remove('dark-mode');
+        modeSwitch.checked = false;
+      }
+    };
   </script>
 
 </body>

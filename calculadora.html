@@ -96,7 +96,6 @@
       border-radius: 8px;
       font-size: 16px;
       background-color: #ffffffc7;
-
     }
 
     .dark-mode input {
@@ -161,9 +160,7 @@
       }
     }
 
-
-    /* From Uiverse.io by alexruix */ 
-    /* The switch - the box around the slider */
+    /* Switch */
     .switch {
       font-size: 17px;
       position: relative;
@@ -171,17 +168,14 @@
       width: 3.5em;
       height: 2em;
       margin: 0 0 0 10px;
-
     }
 
-    /* Hide default HTML checkbox */
     .switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
 
-    /* The slider */
     .slider {
       --background: #171718;
       position: absolute;
@@ -218,21 +212,18 @@
     }
   </style>
 </head>
-<body class="dark-mode"> <!-- Adicionando a classe dark-mode diretamente no body -->
-
-  <!-- BOTÃO PARA TROCAR MODO -->
+<body> <!-- Removido dark-mode diretamente no body -->
 
   <!-- NAVBAR -->
   <div class="navbar">
     <img src="./logo.png" alt="" width="50px" height="auto">
-
     <div style="display: flex;align-items: center;">
       <a href="calculadora.html">Calculadora</a>
       <a href="niveis.html">Níveis</a>
       <a href="sobre.html">Sobre</a>
-        <label class="switch" >
-          <input type="checkbox"onclick="toggleDarkMode()">
-          <span class="slider"></span>
+      <label class="switch">
+        <input type="checkbox" id="darkModeSwitch" onclick="toggleDarkMode()">
+        <span class="slider"></span>
       </label>
     </div>
   </div>
@@ -240,21 +231,37 @@
   <!-- CONTEÚDO PRINCIPAL -->
   <div class="container">
     <h1>Calculadora de Tapetes</h1>
-
     <label for="largura">Largura (cm):</label>
     <input type="number" id="largura" value="50" min="1" oninput="calcular()">
-
     <label for="altura">Altura (cm):</label>
     <input type="number" id="altura" value="50" min="1" oninput="calcular()">
-
     <label for="cores">Número de Cores:</label>
     <input type="number" id="cores" value="5" min="1" oninput="calcular()">
-
     <div class="resultado" id="resultado"></div>
     <div class="nivel" id="nivel"></div>
   </div>
 
   <script>
+    // Função para alternar o modo escuro e claro
+    function toggleDarkMode() {
+      const isDarkMode = document.body.classList.toggle('dark-mode');
+      sessionStorage.setItem('darkMode', isDarkMode);  // Armazenando a preferência na sessão
+      updateDarkModeSwitch();
+    }
+
+    // Atualizar o switch do modo escuro
+    function updateDarkModeSwitch() {
+      const isDarkMode = sessionStorage.getItem('darkMode') === 'true';
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      document.getElementById('darkModeSwitch').checked = isDarkMode;
+    }
+
+    // Recuperar a preferência ao carregar a página
+    window.onload = function() {
+      updateDarkModeSwitch();
+      calcular();  // Garantir que o cálculo seja feito ao carregar
+    };
+
     function calcular() {
       const largura = parseFloat(document.getElementById('largura').value);
       const altura = parseFloat(document.getElementById('altura').value);
@@ -295,21 +302,6 @@
         `Preço final: €${precoBase.toFixed(2)}`;
       document.getElementById('nivel').innerText = nivel;
     }
-
-    // Chamando o cálculo inicialmente para garantir que os valores sejam carregados corretamente
-    calcular();
-
-    // Função para alternar o modo escuro
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const button = document.querySelector('.dark-mode-toggle');
-      if (document.body.classList.contains('dark-mode')) {
-        button.innerText = 'Modo Claro';
-      } else {
-        button.innerText = 'Modo Escuro';
-      }
-    }
   </script>
-
 </body>
 </html>

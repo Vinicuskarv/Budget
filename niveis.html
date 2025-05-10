@@ -360,8 +360,23 @@
   <script>
     // Função para alternar o modo escuro
     function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.toggle('dark-mode');
+      sessionStorage.setItem('darkMode', isDarkMode);  // Armazenando a preferência na sessão
+      updateDarkModeSwitch();
     }
+
+    // Atualizar o switch do modo escuro
+    function updateDarkModeSwitch() {
+      const isDarkMode = sessionStorage.getItem('darkMode') === 'true';
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      document.getElementById('darkModeSwitch').checked = isDarkMode;
+    }
+
+    // Recuperar a preferência ao carregar a página
+    window.onload = function() {
+      updateDarkModeSwitch();
+    };
+
   </script>
 
 </body>
