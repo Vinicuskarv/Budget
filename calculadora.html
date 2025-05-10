@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Orçamento de Tapetes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .navbar {
+      background-color: #007BFF;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar h2 {
+      font-size: 20px;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      margin: 40px auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: 600;
+      display: block;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .resultado {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      color: #222;
+    }
+
+    .nivel {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 16px;
+      color: #555;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <h2>Tapetes Artesanais</h2>
+    <div>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="niveis.html">Níveis</a>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <h1>Calculadora de Tapetes</h1>
+
+    <label for="largura">Largura (cm):</label>
+    <input type="number" id="largura" value="50" min="1" oninput="calcular()">
+
+    <label for="altura">Altura (cm):</label>
+    <input type="number" id="altura" value="50" min="1" oninput="calcular()">
+
+    <label for="cores">Número de Cores:</label>
+    <input type="number" id="cores" value="5" min="1" oninput="calcular()">
+
+    <div class="resultado" id="resultado"></div>
+    <div class="nivel" id="nivel"></div>
+  </div>
+
+  <script>
+    function calcular() {
+      const largura = parseFloat(document.getElementById('largura').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+      const cores = parseInt(document.getElementById('cores').value);
+
+      if (isNaN(largura) || isNaN(altura) || isNaN(cores)) {
+        document.getElementById('resultado').innerText = "Preencha todos os campos.";
+        document.getElementById('nivel').innerText = "";
+        return;
+      }
+
+      const ladoMedio = (largura + altura) / 2;
+      let precoBase = ladoMedio;
+
+      if (cores > 5) {
+        const extras = cores - 5;
+        precoBase += precoBase * (0.05 * extras);
+      }
+
+      precoBase += precoBase * 0.5;
+
+      // Identificando o nível com base nas dimensões
+      let nivel;
+      if (largura <= 20 && altura <= 20) {
+        nivel = "Nível 1: Até 20cm x 20cm";
+      } else if (largura <= 50 && altura <= 50) {
+        nivel = "Nível 2: Até 50cm x 50cm";
+      } else if (largura <= 80 && altura <= 80) {
+        nivel = "Nível 3: Até 80cm x 80cm";
+      } else if (largura <= 100 && altura <= 100) {
+        nivel = "Nível 4: Até 100cm x 100cm";
+      } else {
+        nivel = "Nível 5: Acima de 100cm x 100cm - Avaliação personalizada";
+      }
+
+      // Exibindo o preço e o nível
+      document.getElementById('resultado').innerText =
+        `Preço final: €${precoBase.toFixed(2)}`;
+      document.getElementById('nivel').innerText = nivel;
+    }
+
+    // Chamando o cálculo inicialmente para garantir que os valores sejam carregados corretamente
+    calcular();
+  </script>
+
+</body>
+</html>

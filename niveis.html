@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Níveis dos Tapetes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .navbar {
+      background-color: #007BFF;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .navbar h2 {
+      font-size: 20px;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .nivel {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-left: 5px solid #007BFF;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .nivel h2 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+
+    .nivel p {
+      margin: 8px 0 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .nivel-green {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-left: 5px solid #76e01e;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .nivel-green h2 {
+      margin-top: 0;
+      color: #76e01e;
+    }
+
+    .nivel-green p {
+      margin: 8px 0 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .nivel-red {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-left: 5px solid #ff0000;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .nivel-red h2 {
+      margin-top: 0;
+      color: #ff0000;
+    }
+
+    .nivel-red p {
+      margin: 8px 0 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Responsividade para telas menores */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .navbar a {
+        margin: 10px 0;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .nivel, .nivel-green, .nivel-red {
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .nivel h2, .nivel-green h2, .nivel-red h2 {
+        font-size: 18px;
+      }
+
+      .nivel p, .nivel-green p, .nivel-red p {
+        font-size: 14px;
+      }
+    }
+
+    /* Responsividade para telas muito pequenas (ex: celulares em modo retrato) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+
+      .nivel, .nivel-green, .nivel-red {
+        padding: 10px;
+      }
+
+      .nivel h2, .nivel-green h2, .nivel-red h2 {
+        font-size: 16px;
+      }
+
+      .nivel p, .nivel-green p, .nivel-red p {
+        font-size: 12px;
+      }
+
+      .navbar h2 {
+        font-size: 18px;
+      }
+
+      .navbar a {
+        font-size: 14px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <h2>Tapetes Artesanais</h2>
+    <div>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="niveis.html">Níveis</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Níveis dos Tapetes</h1>
+
+    <div class="nivel">
+      <h2>Nível 1</h2>
+      <p>Dimensões: até <strong>20cm x 20cm</strong></p>
+      <p>Máximo de cores permitidas: <strong>5 cores</strong></p>
+    </div>
+
+    <div class="nivel-green">
+      <h2>Nível 2</h2>
+      <p>Dimensões: até <strong>50cm x 50cm</strong></p>
+      <p>Máximo de cores permitidas: <strong>5 cores</strong></p>
+    </div>
+
+    <div class="nivel">
+      <h2>Nível 3</h2>
+      <p>Dimensões: até <strong>80cm x 80cm</strong></p>
+      <p>Máximo de cores permitidas: <strong>10 cores</strong></p>
+    </div>
+
+    <div class="nivel">
+      <h2>Nível 4</h2>
+      <p>Dimensões: até <strong>100cm x 100cm</strong></p>
+      <p>Máximo de cores permitidas: <strong>15 cores</strong></p>
+    </div>
+
+    <div class="nivel-red">
+      <h2>Nível 5</h2>
+      <p>Dimensões: acima de <strong>100cm x 100cm</strong></p>
+      <p>Necessita de uma avaliação personalizada para o projeto.</p>
+    </div>
+  </div>
+
+</body>
+</html>
