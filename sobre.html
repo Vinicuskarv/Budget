@@ -13,16 +13,27 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f5f5;
+      background: linear-gradient(to right, #68a7c0, #3199df);
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background: linear-gradient(to right, #433563, #132f53);
+      color: #f5f5f5;
     }
 
     .navbar {
-      background-color: #007BFF;
+      background-color: #58585848;
       padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: white;
+    }
+
+    .dark-mode .navbar {
+      background-color: #58585848;
     }
 
     .navbar h2 {
@@ -42,7 +53,7 @@
     }
 
     .container {
-      background: #fff;
+      background: #58585848;
       padding: 40px;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -51,10 +62,19 @@
       margin: 40px auto;
     }
 
+    .dark-mode .container {
+      background-color: #58585848;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
     h1 {
       text-align: center;
       color: #333;
       margin-bottom: 30px;
+    }
+
+    .dark-mode h1 {
+      color: #f5f5f5;
     }
 
     p {
@@ -64,21 +84,109 @@
       margin-bottom: 20px;
     }
 
+    .dark-mode p {
+      color: #ccc;
+    }
+
     .highlight {
       font-weight: bold;
       color: #007BFF;
     }
+
+    /* Responsividade para telas pequenas */
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 10px 15px;
+      }
+
+      .navbar h2 {
+        font-size: 18px;
+      }
+
+      .navbar a {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    /* Switch de Tema */
+    .switch {
+      font-size: 17px;
+      position: relative;
+      display: inline-block;
+      width: 3.5em;
+      height: 2em;
+      margin: 0 0 0 10px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      --background: #171718;
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--background);
+      transition: .5s;
+      border-radius: 30px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 1.4em;
+      width: 1.4em;
+      border-radius: 50%;
+      left: 10%;
+      bottom: 15%;
+      box-shadow: inset 8px -4px 0px 0px #364664;
+      background: var(--background);
+      transition: .5s;
+    }
+
+    input:checked + .slider {
+      background-color: #568585;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(100%);
+      box-shadow: inset 15px -4px 0px 15px #fff000;
+    }
   </style>
 </head>
-<body>
+<body class="dark-mode"> <!-- Modo escuro ativado por padrão -->
 
   <!-- NAVBAR -->
   <div class="navbar">
-    <h2>Tapetes Artesanais</h2>
-    <div>
+    <img src="./logo.png" alt="" width="50px" height="auto">
+  
+    <div style="display: flex;align-items: center;">
       <a href="calculadora.html">Calculadora</a>
       <a href="niveis.html">Níveis</a>
       <a href="sobre.html">Sobre</a>
+      <label class="switch">
+        <input type="checkbox" onclick="toggleDarkMode()">
+        <span class="slider"></span>
+      </label>
     </div>
   </div>
 
@@ -96,6 +204,13 @@
 
     <p>Estamos comprometidos em melhorar continuamente a experiência do usuário e oferecer as melhores ferramentas para quem busca qualidade e eficiência na criação de tapetes artesanais.</p>
   </div>
+
+  <script>
+    // Função para alternar o modo escuro
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 
 </body>
 </html>
