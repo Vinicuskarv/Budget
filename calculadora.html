@@ -2,6 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orçamento de Tapetes</title>
   <style>
     * {
@@ -42,7 +43,7 @@
 
     .container {
       background: #fff;
-      padding: 40px;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       width: 100%;
@@ -87,6 +88,39 @@
       color: #555;
     }
 
+    /* Responsividade para telas pequenas */
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 10px 15px;
+      }
+
+      .navbar h2 {
+        font-size: 18px;
+      }
+
+      .navbar a {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .resultado, .nivel {
+        font-size: 16px;
+      }
+
+      input {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
   </style>
 </head>
 <body>
